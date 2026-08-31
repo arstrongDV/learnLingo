@@ -1,0 +1,44 @@
+:root {
+  --font-family: "Roboto", sans-serif;
+  --white-bg: #fff;
+  --gray: #f8f8f8;
+  --disabled: #12141742;
+  --light-green: #38cd3e;
+  --dark-bg: #121417;
+
+  --yellow-color: #F4C550;
+  --yellow-hover-color: #FBE9BA;
+  --green-color: #9FBAAE;
+  --green-hover-color: #CBDED3;
+  --blue-color: #9FB7CE;
+  --blue-hover-color: #BFD6EA;
+  --red-color: #E0A39A;
+  --red-hover-color: #F2C0BD;
+  --orange-color: #F0AA8D;
+  --orange-hover-color: #F4C8BA;
+}
+
+#root {
+  width: 1440px;
+  max-width: 100%;
+  text-align: center;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--white-bg);
+  font-family: var(--font-family);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
