@@ -50,7 +50,7 @@
         font-size: 16px;
         line-height: 125%;
         color: #121417;
-        transition: color 0.2s ease;
+        transition: color 350ms ease;
 
         &:hover,
         &:focus-visible {
@@ -69,14 +69,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.2s ease;
+    transition: color 350ms ease;
 
     a {
         color: #121417;
         font-weight: 700;
         font-size: 16px;
         line-height: 125%;
-        transition: color 0.2s ease;
+        transition: color 350ms ease;
     }
 
     &:hover,
@@ -90,26 +90,21 @@
 }
 
 .register{
+    display: inline-block;
     border: none;
     border-radius: 12px;
     padding: 14px 39px;
     background: var(--dark-bg);
-    transition: background-color 0.2s ease;
-
-    a {
-        color: var(--white-bg);
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 125%;
-    }
+    color: var(--white-bg);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    transition: background-color 350ms ease, color 350ms ease;
 
     &:hover,
-    &:focus-within {
+    &:focus-visible {
         background: var(--yellow-color);
+        color: var(--dark-bg);
         cursor: pointer;
-
-        a {
-            color: var(--dark-bg);
-        }
     }
 }

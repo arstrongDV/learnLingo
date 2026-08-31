@@ -1,8 +1,11 @@
 import React from 'react'
 import style from './Header.module.css'
-import sprite from '../../assets/icons.svg?no-inline'
+import sprite from '/icons.svg?no-inline'
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <header className={style.headerContainer}>
       <div className={style.headerWrapper}>
@@ -11,12 +14,12 @@ const Header = () => {
             <svg width={28} height={28}>
               <use href={`${sprite}#icon-ukraine`}></use>
             </svg>
-            <a href='/'>LearnLingo</a>
+            <Link to='/'>LearnLingo</Link>
           </span>
 
           <ul className={style.linksList}>
-            <li className={style.linksEl}><a href='/'>Home</a></li>
-            <li className={style.linksEl}><a href='/teachers'>Teachers</a></li>
+            <li className={style.linksEl}><Link to='/'>Home</Link></li>
+            <li className={style.linksEl}><Link to='/teachers'>Teachers</Link></li>
           </ul>
         </span>
 
@@ -25,9 +28,11 @@ const Header = () => {
             <svg width={20} height={20}>
               <use href={`${sprite}#icon-login`}></use>
             </svg>
-            <a href='/login'>Log in</a>
+            <Link to='/login' state={{ backgroundLocation: location }}>Log in</Link>
           </span>
-          <span className={style.register}><a href='/register'>Registration</a></span>
+            <Link to='/register' state={{ backgroundLocation: location }} className={style.register}>
+              Registration
+            </Link>
         </span>
       </div>
     </header>
@@ -35,4 +40,3 @@ const Header = () => {
 }
 
 export default Header
-
