@@ -1,0 +1,35 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    background-color: #0000005c;
+    padding: 0;
+    z-index: 100;
+}
+
+.modalContainer {
+    position: relative;
+    display: block;
+
+    padding: 64px;
+    border-radius: 30px;
+    background: #fff;
+    width: 100%;
+    max-width: 566px;
+}
+
+.closeIcon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    stroke: var(--dark-bg);
+    transition: stroke 350ms ease;
+}
+
+.closeIcon:hover {
+    stroke: var(--disabled);
+}

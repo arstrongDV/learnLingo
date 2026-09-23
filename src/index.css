@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --font-family: "Roboto", sans-serif;
   --white-bg: #fff;
@@ -6,16 +12,8 @@
   --light-green: #38cd3e;
   --dark-bg: #121417;
 
-  --yellow-color: #F4C550;
-  --yellow-hover-color: #FBE9BA;
   --green-color: #9FBAAE;
   --green-hover-color: #CBDED3;
-  --blue-color: #9FB7CE;
-  --blue-hover-color: #BFD6EA;
-  --red-color: #E0A39A;
-  --red-hover-color: #F2C0BD;
-  --orange-color: #F0AA8D;
-  --orange-hover-color: #F4C8BA;
 }
 
 #root {
@@ -35,10 +33,25 @@ body {
   font-family: var(--font-family);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5{
+  margin: 0;
+}
+
 a {
   text-decoration: none;
 }
 
 ul {
   list-style: none;
+}
+
+h1 {
+  margin: 0;
+}
+p {
+  margin: 0;
 }

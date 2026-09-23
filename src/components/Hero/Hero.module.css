@@ -1,0 +1,126 @@
+.heroSection {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 64px;
+}
+
+.textBlock {
+    border-radius: 30px;
+    background: #f8f8f8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 720px;
+    padding: 98px 64px;
+
+    h1 {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 117%;
+        letter-spacing: -0.02em;
+        color: var(--dark-bg);
+        text-align: start;
+        max-width: 548px;
+        margin-bottom: 32px;
+    }
+
+    .heroLighlight {
+        font-weight: 400;
+        font-style: italic;
+        background-color: var(--green-hover-color);
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 138%;
+        letter-spacing: -0.02em;
+        color: var(--dark-bg);
+        max-width: 471px;
+        text-align: start;
+        margin-bottom: 64px;
+    }
+}
+
+.btnStart {
+    align-self: flex-start;
+
+    border-radius: 12px;
+    background: var(--green-color);
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
+    text-decoration: none;
+    padding: 16px 88px;
+}
+
+.banersWrapper{
+    display: flex;
+    width: 100%;
+    gap: 24px;
+}
+
+.banner{
+    position: relative;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 568px;
+    height: 530px;
+    background-color: #cbded3;
+
+    .avatarImg{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -55%);
+    }
+
+    .laptopImg{
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 0);
+    }
+}
+
+.infoList{
+    border: 1.50px dashed #9fbaae;
+    border-radius: 30px;
+    max-width: 1312px;
+    width: 100%;
+    padding: 40px 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.infoEl{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    h3{
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 114%;
+        letter-spacing: -0.02em;
+        color: #121417;
+        margin: 0;
+    }
+
+    p {
+        max-width: 96px;
+        text-align: start;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 129%;
+        letter-spacing: -0.02em;
+        color: rgba(18, 20, 23, 0.7);
+        margin: 0;
+    }
+}
