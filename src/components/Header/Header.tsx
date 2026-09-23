@@ -1,10 +1,24 @@
 import React from 'react'
 import style from './Header.module.css'
 import sprite from '/icons.svg?no-inline'
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast'
+import { useAuth } from '../../context/useAuth'
+import { logoutUser } from '../../services/auth'
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isLoggedIn, isLoading } = useAuth();
+
+  const handleLogout = async () => {
+    const result = await logoutUser();
+    if (result.success) {
+      toast.success('You have logged out');
+    } else {
+      toast.error(result.error);
+    }
+  };
 
   return (
     <header className={style.headerContainer}>
@@ -23,17 +37,30 @@ const Header = () => {
           </ul>
         </span>
 
-        <span className={style.authBtns}>
-          <span className={style.login}>
-            <svg width={20} height={20}>
-              <use href={`${sprite}#icon-login`}></use>
-            </svg>
-            <Link to='/login' state={{ backgroundLocation: location }}>Log in</Link>
+        {!isLoading && (
+          <span className={style.authBtns}>
+            {isLoggedIn ? (
+              <>
+                <span className={style.userName}>{user?.name ?? user?.email}</span>
+                <button onClick={handleLogout} className={style.register}>
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <span className={style.login}>
+                  <svg width={20} height={20}>
+                    <use className={style.loginIcon} href={`${sprite}#icon-login`}></use>
+                  </svg>
+                  <Link to='/login' state={{ backgroundLocation: location }}>Log in</Link>
+                </span>
+                <button onClick={() => navigate('/register', { state: { backgroundLocation: location } })} className={style.register}>
+                  Registration
+                </button>
+              </>
+            )}
           </span>
-            <Link to='/register' state={{ backgroundLocation: location }} className={style.register}>
-              Registration
-            </Link>
-        </span>
+        )}
       </div>
     </header>
   )
