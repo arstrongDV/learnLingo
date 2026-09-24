@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { User } from "firebase/auth";
+import type { Teacher, TeacherData } from "../types/user";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
@@ -8,7 +8,9 @@ const api = axios.create({
     }
 });
 
-export const fetchTeachers = async (): Promise<User[]> => {
-    const res = await api.get<User[]>('/.json');
-    return res.data;
+export const fetchTeachers = async (): Promise<Teacher[]> => {
+    const res = await api.get<Record<string, TeacherData> | TeacherData[] | null>('/.json');
+    if (!res.data) return [];
+
+    return Object.entries(res.data).map(([id, teacher]) => ({ id, ...teacher }));
 }

@@ -1,0 +1,48 @@
+.cardContainer{
+    display: flex;
+    gap: 48px;
+    border-radius: 24px;
+    padding: 24px;
+    background-color: var(--white-bg);
+    width: 100%;
+    max-width: 1184px;
+}
+
+.circle {
+    position: relative;
+    border: 3px solid #fbe9ba;
+    border-radius: 100px;
+    max-width: 120px;
+    max-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.avatar {
+    border-radius: 100px;
+    width: 96px;
+    height: 96px;
+}
+
+.isOnlineCircle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 13px;
+    height: 13px;
+
+    border: 2.5px solid var(--white-bg);
+    background-color: #38CD3E;
+    border-radius: 50%;
+}
+
+
+
+
+.bookIcon {
+    fill: #fff;
+    stroke: #000000;
+}
