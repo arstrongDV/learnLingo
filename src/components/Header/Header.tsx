@@ -42,7 +42,7 @@ const Header = () => {
             {isLoggedIn ? (
               <>
                 <span className={style.userName}>{user?.name ?? user?.email}</span>
-                <button onClick={handleLogout} className={style.register}>
+                <button onClick={handleLogout} className={style.logout}>
                   Log out
                 </button>
               </>
@@ -50,7 +50,7 @@ const Header = () => {
               <>
                 <span className={style.login}>
                   <svg width={20} height={20}>
-                    <use className={style.loginIcon} href={`${sprite}#icon-login`}></use>
+                    <use href={`${sprite}#icon-login`}></use>
                   </svg>
                   <Link to='/login' state={{ backgroundLocation: location }}>Log in</Link>
                 </span>

@@ -2,8 +2,6 @@
     width: 100%;
     max-width: 1184px;
     margin: 0 auto;
-    box-sizing: border-box;
-    padding: 20px 64px;
 }
 
 .headerWrapper {
@@ -23,8 +21,6 @@
 
 .logo{
     display: flex;
-    margin: 0;
-    padding: 0;
 
     gap: 8px;
     align-items: center;
@@ -40,8 +36,6 @@
 .linksList {
     display: flex;
     align-items: center;
-    margin: 0;
-    padding: 0;
     gap: 28px;
 }
 
@@ -54,7 +48,7 @@
 
         &:hover,
         &:focus-visible {
-            color: var(--yellow-color);
+            color: var(--green-hover-color);
         }
     }
 }
@@ -66,13 +60,14 @@
 }
 
 .login {
+    --color1: var(--dark-bg);
+
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: color 350ms ease;
 
     a {
-        color: #121417;
+        color: var(--dark-bg);
         font-weight: 700;
         font-size: 16px;
         line-height: 125%;
@@ -81,10 +76,10 @@
 
     &:hover,
     &:focus-within {
-        color: var(--yellow-color);
+        --color1: var(--green-hover-color);
 
         a {
-            color: var(--yellow-color);
+            color: var(--green-hover-color);
         }
     }
 }
@@ -96,13 +91,9 @@
     line-height: 125%;
 }
 
-.loginIcon {
-    --color1: var(--dark-bg);
-}
-
-.register{
+.register,
+.logout {
     display: inline-block;
-    border: none;
     border-radius: 12px;
     padding: 14px 39px;
     background: var(--dark-bg);
@@ -114,7 +105,7 @@
 
     &:hover,
     &:focus-visible {
-        background: var(--yellow-color);
+        background: var(--green-hover-color);
         color: var(--dark-bg);
         cursor: pointer;
     }

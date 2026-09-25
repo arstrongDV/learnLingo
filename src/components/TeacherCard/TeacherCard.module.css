@@ -8,16 +8,20 @@
     max-width: 1184px;
 }
 
+.avatarWrapper {
+    flex-shrink: 0;
+}
+
 .circle {
     position: relative;
     border: 3px solid #fbe9ba;
     border-radius: 100px;
-    max-width: 120px;
-    max-height: 120px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 9px;
 }
 
 .avatar {
@@ -40,9 +44,94 @@
 }
 
 
+.languagesTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #8a8a89;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 100%;
+        color: #121417;
+        font-weight: 500;
+    }
+}
+
+.infoWrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.teacherInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.infoDescItems {
+    display: flex;
+}
+
+.teacherInfoDesc {
+    display: flex;
+    gap: 64px;
+}
+
+.descItem {
+    position: relative;
+    padding: 0 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark-bg);
+}
+
+.descItem:first-child {
+    padding-left: 0;
+}
+
+.descItem:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background-color: rgba(18, 20, 23, 0.2);
+}
+
 
 
 .bookIcon {
-    fill: #fff;
-    stroke: #000000;
+    fill: transparent;
+    stroke: #121417;
+}
+
+.heartIcon {
+    fill: transparent;
+    stroke: #121417;
+    transition: fill 350ms ease;
+    cursor: pointer;
+}
+
+.heartIcon:hover {
+    fill: #121417;
+}
+
+.lightGreen {
+    color: #38CD3E;
 }
