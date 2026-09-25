@@ -114,8 +114,6 @@
     background-color: rgba(18, 20, 23, 0.2);
 }
 
-
-
 .bookIcon {
     fill: transparent;
     stroke: #121417;
@@ -134,4 +132,28 @@
 
 .lightGreen {
     color: #38CD3E;
+}
+.teacherTalents {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 32px;
+    text-align: start;
+}
+
+.talent {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark-bg);
+}
+
+.talentLabel {
+    color: #8a8a89;
+}
+
+.languages {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
 }

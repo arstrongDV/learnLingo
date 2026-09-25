@@ -59,6 +59,23 @@ const TeacherCard = ({teacher}: TeacherCardProps) => {
                     </svg>
                 </span>
             </div>
+
+            <div className={style.teacherTalents}>
+                <p className={style.talent}>
+                    <span className={style.talentLabel}>Speaks: </span>
+                    <span className={style.languages}>{teacher.languages.join(', ')}</span>
+                </p>
+
+                <p className={style.talent}>
+                    <span className={style.talentLabel}>Lesson Info: </span>
+                    {teacher.lesson_info}
+                </p>
+
+                <p className={style.talent}>
+                    <span className={style.talentLabel}>Conditions: </span>
+                    {teacher.conditions.join(' ')}
+                </p>
+            </div>
             <div className={style.levels}>
 
             </div>
