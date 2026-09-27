@@ -1,14 +1,13 @@
 import React from 'react'
 import style from './Header.module.css'
 import sprite from '/icons.svg?no-inline'
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import toast from 'react-hot-toast'
 import { useAuth } from '../../context/useAuth'
 import { logoutUser } from '../../services/auth'
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { user, isLoggedIn, isLoading } = useAuth();
 
   const handleLogout = async () => {
@@ -21,45 +20,47 @@ const Header = () => {
   };
 
   return (
-    <header className={style.headerContainer}>
-      <div className={style.headerWrapper}>
-        <span className={style.content}>
-          <span className={style.logo}>
-            <svg width={28} height={28}>
+    <header className={style.header}>
+      <div className={style.container}>
+        <div className={style.brandNav}>
+          <Link to='/' className={style.logo}>
+            <svg width={28} height={28} aria-hidden='true'>
               <use href={`${sprite}#icon-ukraine`}></use>
             </svg>
-            <Link to='/'>LearnLingo</Link>
-          </span>
+            LearnLingo
+          </Link>
 
-          <ul className={style.linksList}>
-            <li className={style.linksEl}><Link to='/'>Home</Link></li>
-            <li className={style.linksEl}><Link to='/teachers'>Teachers</Link></li>
-          </ul>
-        </span>
+          <nav aria-label='Main'>
+            <ul className={style.navList}>
+              <li><Link to='/' className={style.navLink}>Home</Link></li>
+              <li><Link to='/teachers' className={style.navLink}>Teachers</Link></li>
+            </ul>
+          </nav>
+        </div>
 
         {!isLoading && (
-          <span className={style.authBtns}>
+          <div className={style.authActions}>
             {isLoggedIn ? (
               <>
                 <span className={style.userName}>{user?.name ?? user?.email}</span>
-                <button onClick={handleLogout} className={style.logout}>
+                <button type='button' onClick={handleLogout} className={style.primaryButton}>
                   Log out
                 </button>
               </>
             ) : (
               <>
-                <span className={style.login}>
-                  <svg width={20} height={20}>
+                <Link to='/login' state={{ backgroundLocation: location }} className={style.loginLink}>
+                  <svg width={20} height={20} aria-hidden='true'>
                     <use href={`${sprite}#icon-login`}></use>
                   </svg>
-                  <Link to='/login' state={{ backgroundLocation: location }}>Log in</Link>
-                </span>
-                <button onClick={() => navigate('/register', { state: { backgroundLocation: location } })} className={style.register}>
+                  Log in
+                </Link>
+                <Link to='/register' state={{ backgroundLocation: location }} className={style.primaryButton}>
                   Registration
-                </button>
+                </Link>
               </>
             )}
-          </span>
+          </div>
         )}
       </div>
     </header>

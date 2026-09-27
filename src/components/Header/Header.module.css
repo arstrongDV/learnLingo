@@ -1,112 +1,99 @@
-.headerContainer {
+.header {
     width: 100%;
     max-width: 1184px;
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
 }
 
-.headerWrapper {
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
 }
 
-.content{
+.brandNav {
     display: flex;
-    width: 100%;
-    max-width: 661px;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 661px;
 }
 
-.logo{
+.logo {
     display: flex;
-
-    gap: 8px;
     align-items: center;
-    a {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 120%;
-        letter-spacing: -0.02em;
-        color: var(--dark-bg);
-    }
+    gap: 8px;
+
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
-.linksList {
+.navList {
     display: flex;
     align-items: center;
     gap: 28px;
 }
 
-.linksEl{
-    a {
-        font-size: 16px;
-        line-height: 125%;
-        color: #121417;
-        transition: color 350ms ease;
+.navLink {
+    font-size: 16px;
+    line-height: 1.25;
+    transition: color var(--transition);
 
-        &:hover,
-        &:focus-visible {
-            color: var(--green-hover-color);
-        }
+    &:hover,
+    &:focus-visible {
+        color: var(--green-color);
     }
 }
 
-.authBtns {
+.authActions {
     display: flex;
-    gap: 16px;
     align-items: center;
+    gap: 16px;
 }
 
-.login {
+.userName {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.loginLink {
+    /* stroke color of the sprite icon */
     --color1: var(--dark-bg);
 
     display: flex;
     align-items: center;
     gap: 8px;
 
-    a {
-        color: var(--dark-bg);
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 125%;
-        transition: color 350ms ease;
-    }
-
-    &:hover,
-    &:focus-within {
-        --color1: var(--green-hover-color);
-
-        a {
-            color: var(--green-hover-color);
-        }
-    }
-}
-
-.userName {
-    color: #121417;
     font-weight: 700;
     font-size: 16px;
-    line-height: 125%;
-}
-
-.register,
-.logout {
-    display: inline-block;
-    border-radius: 12px;
-    padding: 14px 39px;
-    background: var(--dark-bg);
-    color: var(--white-bg);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 125%;
-    transition: background-color 350ms ease, color 350ms ease;
+    line-height: 1.25;
+    transition: color var(--transition);
 
     &:hover,
     &:focus-visible {
-        background: var(--green-hover-color);
+        --color1: var(--green-color);
+        color: var(--green-color);
+    }
+}
+
+.primaryButton {
+    display: inline-block;
+    padding: 14px 39px;
+    border-radius: 12px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--white-bg);
+    background-color: var(--dark-bg);
+    transition: background-color var(--transition), color var(--transition);
+
+    &:hover,
+    &:focus-visible {
         color: var(--dark-bg);
-        cursor: pointer;
+        background-color: var(--green-hover-color);
     }
 }

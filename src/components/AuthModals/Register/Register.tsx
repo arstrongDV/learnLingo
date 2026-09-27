@@ -34,52 +34,71 @@ const Register = () => {
     };
     
   return (
-    <Modal isOpen={true} onClose={() => navigate(-1)}>
+    <Modal isOpen={true} onClose={() => navigate(-1)} labelledBy='register-title'>
         <div>
             <div className={style.titleBlock}>
-                <h2>Registration</h2>
-                <p>
-                    Thank you for your interest in our platform! 
-                    In order to register, we need some information. 
+                <h2 id='register-title' className={style.title}>Registration</h2>
+                <p className={style.text}>
+                    Thank you for your interest in our platform!
+                    In order to register, we need some information.
                     Please provide us with the following information
                 </p>
             </div>
 
-            <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={style.form} onSubmit={handleSubmit(onSubmit)} noValidate>
                 <div className={style.inputs}>
                     <div>
                         <input
+                            type='text'
+                            className={style.input}
                             placeholder='Name'
+                            aria-label='Name'
+                            autoComplete='name'
+                            aria-invalid={!!errors.name}
+                            aria-describedby={errors.name ? 'register-name-error' : undefined}
                             {...register("name")}
                         />
-                        {errors.name && <p className={style.errorText}>{errors.name.message}</p>}
+                        {errors.name && <p id='register-name-error' className={style.errorText}>{errors.name.message}</p>}
                     </div>
 
                     <div>
                         <input
+                            type='email'
+                            className={style.input}
                             placeholder='Email'
+                            aria-label='Email'
+                            autoComplete='email'
+                            aria-invalid={!!errors.email}
+                            aria-describedby={errors.email ? 'register-email-error' : undefined}
                             {...register("email")}
                         />
-                        {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
+                        {errors.email && <p id='register-email-error' className={style.errorText}>{errors.email.message}</p>}
                     </div>
 
                     <div>
-                        <label className={style.passwordLabel}>
+                        <div className={style.passwordField}>
                             <input
-                                placeholder='Password'
                                 type={showPassword ? 'text' : 'password'}
+                                className={`${style.input} ${style.passwordInput}`}
+                                placeholder='Password'
+                                aria-label='Password'
+                                autoComplete='new-password'
+                                aria-invalid={!!errors.password}
+                                aria-describedby={errors.password ? 'register-password-error' : undefined}
                                 {...register("password")}
                             />
-                            <svg
-                                className={style.eyeIcon}
-                                width={18}
-                                height={18}
+                            <button
+                                type='button'
+                                className={style.eyeButton}
+                                aria-label={showPassword ? 'Hide password' : 'Show password'}
                                 onClick={() => setShowPassword((prev) => !prev)}
                             >
-                                <use href={`${sprite}#${showPassword ? 'icon-eye' : 'icon-eye-off'}`}></use>
-                            </svg>
-                        </label>
-                        {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
+                                <svg width={18} height={18} aria-hidden='true'>
+                                    <use href={`${sprite}#${showPassword ? 'icon-eye' : 'icon-eye-off'}`}></use>
+                                </svg>
+                            </button>
+                        </div>
+                        {errors.password && <p id='register-password-error' className={style.errorText}>{errors.password.message}</p>}
                     </div>
                 </div>
 

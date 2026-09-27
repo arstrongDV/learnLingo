@@ -7,10 +7,12 @@ import sprite from '/icons.svg?no-inline'
 interface ModalProps {
     isOpen: boolean,
     onClose: () => void;
+    /** id of the modal title, announced by screen readers */
+    labelledBy?: string;
     children: React.ReactElement
 }
 
-const Modal = ({isOpen, onClose, children}: ModalProps) => {
+const Modal = ({isOpen, onClose, labelledBy, children}: ModalProps) => {
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -35,10 +37,12 @@ const Modal = ({isOpen, onClose, children}: ModalProps) => {
 
     return ReactDOM.createPortal(
     <div className={style.backdrop} onClick={() => onClose()}>
-        <div className={style.modalContainer} onClick={(e) => e.stopPropagation()}>
-            <svg className={style.closeIcon} width={28} height={28} onClick={() => onClose()}>
-                <use href={`${sprite}#icon-x`}></use>
-            </svg>
+        <div className={style.modalContainer} role='dialog' aria-modal='true' aria-labelledby={labelledBy} onClick={(e) => e.stopPropagation()}>
+            <button type='button' className={style.closeButton} aria-label='Close' onClick={() => onClose()}>
+                <svg width={28} height={28} aria-hidden='true'>
+                    <use href={`${sprite}#icon-x`}></use>
+                </svg>
+            </button>
             
             { children }
         </div>
