@@ -68,6 +68,9 @@
 .infoWrapper {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 
@@ -138,7 +141,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    margin-top: 32px;
+    margin-bottom: 16px;
     text-align: start;
 }
 
@@ -162,7 +165,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 16px;
 
     font-weight: 500;
     font-size: 16px;
@@ -172,13 +174,66 @@
     color: #121417;
 }
 
+.teacherDescription{
+    text-align: start;
+}
+
+
+.reviewsContainer {
+    width: 100%;
+    max-width: 417px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.rewiewWrapper{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reviewerHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
+    p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #8a8a89;
+    }
+
+    .reviewerRating {
+        display: flex;
+        gap: 9px;
+        align-items: center;
+
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 129%;
+        color: #121417;
+    }
+}
+
+.reviewerComment{
+    text-align: start;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #121417;
+}
 
 .levels {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-
-    margin-top: 32px;
 }
 
 .level {
@@ -193,6 +248,24 @@
 }
 
 .level:first-child {
-    background-color: #f4c550;
-    border-color: #f4c550;
+    background-color: var(--green-color);
+    border: none;
+}
+
+.teacherBook {
+    border-radius: 12px;
+    padding: 16px 0;
+    background-color: var(--green-color);
+    max-width: 232px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
+
+    transition: background-color 350ms ease;
+}
+
+.teacherBook:hover {
+    background-color: var(--green-hover-color);
 }
