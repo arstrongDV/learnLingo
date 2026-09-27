@@ -11,102 +11,97 @@ const TeacherCard = ({teacher}: TeacherCardProps) => {
     const [isReadMore, setReadMore] = useState(false);
 
   return (
-    <div className={style.cardContainer} >
-        <div className={style.avatarWrapper} >
-
-            <div className={style.circle}>
-                <div className={style.isOnlineCircle}></div>
-                <img className={style.avatar} src={`${teacher.avatar_url}`} alt='teacher-photo' />
-            </div>
-
+    <article className={style.card}>
+        <div className={style.avatarRing}>
+            <img className={style.avatarImg} src={teacher.avatar_url} alt={`${teacher.name} ${teacher.surname}`} />
+            <span className={style.onlineBadge} aria-hidden='true'></span>
         </div>
-        <div className={style.infoWrapper}>
-            <div className={style.teacherInfo}>
-                <span className={style.infoHeader}>
-                    <div className={style.languagesTitle}>
-                        <p>Languages</p>
-                        <h3>{teacher.name} {teacher.surname}</h3>
-                    </div>
-                </span>
-                <span className={style.teacherInfoDesc}>
-                    <div className={style.infoDescItems}>
-                        <span className={style.descItem}>
-                            <svg width={16} height={16}>
-                                <use className={style.bookIcon} href={`${sprite}#icon-book`}></use>
-                            </svg>
 
-                            <p>Lessons online</p>
-                        </span>
-
-                        <span className={style.descItem}>
-                            <p>Lessons done: {teacher.lessons_done}</p>
-                        </span>
-
-                        <span className={style.descItem}>
-                            <svg width={16} height={16}>
-                                <use className={style.starIcon} href={`${sprite}#icon-star`}></use>
-                            </svg>
-
-                            <p>Rating: {teacher.rating}</p>
-                        </span>
-
-                        <span className={style.descItem}>
-                            <p>Price / 1 hour: <span className={style.lightGreen}>{teacher.price_per_hour}$</span></p>
-                        </span>
-                    </div>
-
-                    <svg width={26} height={26}>
-                        <use className={style.heartIcon} href={`${sprite}#icon-heart`}></use>
-                    </svg>
-                </span>
-            </div>
-            <div className={style.teacherInfoWrapper}>
-                <div className={style.teacherTalents}>
-                    <p className={style.talent}>
-                        <span className={style.talentLabel}>Speaks: </span>
-                        <span className={style.languages}>{teacher.languages.join(', ')}</span>
-                    </p>
-
-                    <p className={style.talent}>
-                        <span className={style.talentLabel}>Lesson Info: </span>
-                        {teacher.lesson_info}
-                    </p>
-
-                    <p className={style.talent}>
-                        <span className={style.talentLabel}>Conditions: </span>
-                        {teacher.conditions.join(' ')}
-                    </p>
+        <div className={style.content}>
+            <header className={style.cardHeader}>
+                <div className={style.titleBlock}>
+                    <p className={style.subtitle}>Languages</p>
+                    <h2 className={style.name}>{teacher.name} {teacher.surname}</h2>
                 </div>
 
-                {!isReadMore ? 
-                    <button onClick={() => setReadMore(true)} className={style.readMeSpan}>Read more</button>
-                    :
-                    <p className={style.teacherDescription}>
-                        {teacher.experience}
-                    </p>
-                }
+                <div className={style.headerActions}>
+                    <ul className={style.stats}>
+                        <li className={style.statItem}>
+                            <svg className={style.bookIcon} width={16} height={16} aria-hidden='true'>
+                                <use href={`${sprite}#icon-book`}></use>
+                            </svg>
+                            Lessons online
+                        </li>
+
+                        <li className={style.statItem}>
+                            Lessons done: {teacher.lessons_done}
+                        </li>
+
+                        <li className={style.statItem}>
+                            <svg width={16} height={16} aria-hidden='true'>
+                                <use href={`${sprite}#icon-star`}></use>
+                            </svg>
+                            Rating: {teacher.rating}
+                        </li>
+
+                        <li className={style.statItem}>
+                            <span>Price / 1 hour: <span className={style.price}>{teacher.price_per_hour}$</span></span>
+                        </li>
+                    </ul>
+
+                    <button type='button' className={style.favoriteButton} aria-label='Add to favorites'>
+                        <svg width={26} height={26} aria-hidden='true'>
+                            <use href={`${sprite}#icon-heart`}></use>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div>
+                <dl className={style.details}>
+                    <div className={style.detailRow}>
+                        <dt className={style.detailTerm}>Speaks:</dt>
+                        <dd className={`${style.detailValue} ${style.languages}`}>{teacher.languages.join(', ')}</dd>
+                    </div>
+
+                    <div className={style.detailRow}>
+                        <dt className={style.detailTerm}>Lesson Info:</dt>
+                        <dd className={style.detailValue}>{teacher.lesson_info}</dd>
+                    </div>
+
+                    <div className={style.detailRow}>
+                        <dt className={style.detailTerm}>Conditions:</dt>
+                        <dd className={style.detailValue}>{teacher.conditions.join(' ')}</dd>
+                    </div>
+                </dl>
+
+                {!isReadMore ? (
+                    <button type='button' onClick={() => setReadMore(true)} className={style.readMoreButton}>
+                        Read more
+                    </button>
+                ) : (
+                    <p>{teacher.experience}</p>
+                )}
             </div>
 
             {isReadMore && (
-                <div className={style.reviewsContainer}>
+                <ul className={style.reviews}>
                     {teacher.reviews.map((rewiew) => (
-                        <div className={style.rewiewWrapper}>
-                            <div className={style.reviewerHeader}>
-                                <p>{rewiew.reviewer_name}</p>
-                                <span className={style.reviewerRating}>
-                                    <svg width={16} height={16}>
-                                        <use className={style.starIcon} href={`${sprite}#icon-star`}></use>
+                        <li key={rewiew.reviewer_name} className={style.review}>
+                            <div className={style.reviewer}>
+                                <p className={style.reviewerName}>{rewiew.reviewer_name}</p>
+                                <p className={style.reviewerRating}>
+                                    <svg width={16} height={16} aria-hidden='true'>
+                                        <use href={`${sprite}#icon-star`}></use>
                                     </svg>
                                     {rewiew.reviewer_rating.toFixed(1)}
-                                </span>
+                                </p>
                             </div>
 
-                            <p className={style.reviewerComment}>
-                                {rewiew.comment}
-                            </p>
-                        </div>
+                            <p className={style.reviewComment}>{rewiew.comment}</p>
+                        </li>
                     ))}
-                </div>
+                </ul>
             )}
 
             <ul className={style.levels}>
@@ -117,9 +112,9 @@ const TeacherCard = ({teacher}: TeacherCardProps) => {
                 ))}
             </ul>
 
-            <button className={style.teacherBook}>Book trial lesson</button>
+            <button type='button' className={style.bookButton}>Book trial lesson</button>
         </div>
-    </div>
+    </article>
   )
 }
 

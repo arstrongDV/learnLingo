@@ -1,15 +1,15 @@
-.Container {
-    background-color: #f8f8f8;
-    min-height: 100svh;                         /* fill the screen even before cards load */
-
-    /* stretch the background past #root's 1440px to the screen edges */
-    box-shadow: 0 0 0 100vmax #f8f8f8;
-    clip-path: inset(0 -100vmax);
-
-    padding: 96px 128px;
+.page {
+    min-height: 100svh;
+    padding: 96px 0;
+    background-color: var(--gray);
 }
 
-.teachersWrapper {
+.container {
+    max-width: 1184px;
+    margin: 0 auto;
+}
+
+.list {
     display: flex;
     flex-direction: column;
     gap: 32px;

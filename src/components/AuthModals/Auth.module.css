@@ -1,48 +1,28 @@
 .titleBlock {
-    max-width: 438px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-width: 438px;
     margin-bottom: 40px;
+}
 
-    h2{
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 120%;
-        letter-spacing: -0.02em;
-        color: var(--dark-bg);
-    }
+.title {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
 
-    p{
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 138%;
-        color: rgba(18, 20, 23, 0.8);
-    }
+.text {
+    font-size: 16px;
+    line-height: 1.38;
+    color: var(--text-description);
 }
 
 .form {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 40px;
-
-    input {
-        width: 100%;
-        border: 1px solid rgba(18, 20, 23, 0.1);
-        border-radius: 12px;
-        padding: 18px 16px;
-
-        font-size: 16px;
-        line-height: 138%;
-        color: var(--dark-bg);
-    }
-
-    input::placeholder {
-        font-size: 16px;
-        line-height: 138%;
-        color: var(--dark-bg);
-    }
 }
 
 .inputs {
@@ -51,50 +31,72 @@
     gap: 18px;
 }
 
-.passwordLabel {
-    position: relative;
-    display: block;
+.input {
     width: 100%;
+    padding: 18px 16px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 12px;
 
-    input {
-        padding-right: 52px;
+    font-size: 16px;
+    line-height: 1.38;
+    transition: border-color var(--transition);
+
+    &::placeholder {
+        color: var(--dark-bg);
+    }
+
+    &:focus-visible {
+        outline: none;
+        border-color: var(--green-color);
+    }
+
+    &[aria-invalid='true'] {
+        border-color: var(--error-color);
     }
 }
 
-.eyeIcon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    stroke: var(--dark-bg);
-    transition: stroke 350ms ease;
+.passwordField {
+    position: relative;
 }
 
-.eyeIcon:hover {
-    stroke: var(--disabled);
+.passwordInput {
+    padding-right: 52px;
+}
+
+.eyeButton {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
+    stroke: var(--dark-bg);
+    transition: stroke var(--transition);
+
+    &:hover,
+    &:focus-visible {
+        stroke: var(--disabled);
+    }
 }
 
 .errorText {
     margin-top: 6px;
     font-size: 13px;
-    color: #e04c4c;
-    text-align: start;
+    color: var(--error-color);
 }
 
 .submitButton {
-    border-radius: 12px;
-    padding: 16px 0;
     max-width: 438px;
-    background-color: var(--green-color);
+    padding: 16px 0;
+    border-radius: 12px;
 
     font-weight: 700;
     font-size: 18px;
-    line-height: 156%;
-    color: var(--dark-bg);
-    transition: background-color 350ms ease;
-}
+    line-height: 1.56;
+    background-color: var(--green-color);
+    transition: background-color var(--transition);
 
-.submitButton:hover {
-    background-color: var(--green-hover-color);
+    &:hover,
+    &:focus-visible {
+        background-color: var(--green-hover-color);
+    }
 }

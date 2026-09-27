@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import AuthProvider from './context/AuthProvider'
-import './App.css'
 import Home from './pages/Home'
 import Teachers from './pages/Teachers'
 import Register from './components/AuthModals/Register/Register'

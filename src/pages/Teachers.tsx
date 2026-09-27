@@ -25,14 +25,18 @@ const Teachers = () => {
 
 
   return (
-    <main className={style.Container}>
-      
-      <div className={style.teachersWrapper}>
-        {teachers.map(teacher => (
-          <TeacherCard key={teacher.id} teacher={teacher} />
-        ))}
-      </div>
+    <main className={style.page}>
+      <div className={style.container}>
+        <h1 className='visually-hidden'>Teachers</h1>
 
+        <ul className={style.list}>
+          {teachers.map(teacher => (
+            <li key={teacher.id}>
+              <TeacherCard teacher={teacher} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   )
 }
