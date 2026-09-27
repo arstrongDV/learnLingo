@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section className={style.heroSection}>
       <div className={style.banersWrapper}>
-          <div className={style.textBlock}>
+        <div className={style.textBlock}>
             <h1>
               Unlock your potential with the 
               best <span className={style.heroLighlight}>language</span> tutors

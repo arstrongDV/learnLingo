@@ -87,8 +87,6 @@
     padding: 16px 0;
     max-width: 438px;
     background-color: var(--green-color);
-    border: none;
-    cursor: pointer;
 
     font-weight: 700;
     font-size: 18px;
