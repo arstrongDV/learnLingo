@@ -7,18 +7,26 @@ import style from './Teachers.module.css'
 
 const Teachers = () => {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [lastKey, setLastKey] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const getTeachers = async () => {
+    const loadTeachers = async (fromKey?: string) => {
+      setIsLoading(true);
         try {
-            const res = await fetchTeachers();
-            setTeachers(res);
+            const page = await fetchTeachers(fromKey);
+            setTeachers(prev => fromKey ? [...prev, ...page.teachers] : page.teachers);
+            setLastKey(page.lastKey);
+            setHasMore(page.hasMore);
         } catch(err) {
             toast.error("Faild to load teachers. Try again later!");
+        } finally {
+          setIsLoading(false);
         }
     }
 
     useEffect(() => {
-      getTeachers();
+      loadTeachers();
     }, []);
 
     console.log(teachers);
@@ -36,6 +44,17 @@ const Teachers = () => {
             </li>
           ))}
         </ul>
+
+        {hasMore && (
+          <button 
+            className={style.loadMore}
+            type='button' 
+            onClick={() => loadTeachers(lastKey ?? undefined)} 
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Load more'}
+          </button>
+        )}
       </div>
     </main>
   )
