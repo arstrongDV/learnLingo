@@ -1,5 +1,5 @@
 import type { Teacher } from '../../types/user'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import sprite from '/icons.svg?no-inline'
 import style from './TeacherCard.module.css'
 
