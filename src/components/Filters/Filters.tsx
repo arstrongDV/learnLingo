@@ -1,10 +1,5 @@
-import React from 'react'
+import Select, { type SelectOption } from '../Select/Select'
 import style from './Filters.module.css'
-
-interface FiltersProps {
-  filters: FilterState;
-  onFilterChange: (filters: FilterState) => void;
-}
 
 export interface FilterState {
   language: string;
@@ -12,51 +7,69 @@ export interface FilterState {
   price: string;
 }
 
-const Filters = ({ filters, onFilterChange }: FiltersProps) => {
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        onFilterChange({
-            ...filters,
-            [e.target.name]: e.target.value
-        });
-    }
+interface FiltersProps {
+  filters: FilterState;
+  onFilterChange: (filters: FilterState) => void;
+}
 
+const ALL: SelectOption = { value: '', label: 'All' };
+
+const LANGUAGE_OPTIONS: SelectOption[] = [
+  ALL,
+  { value: 'French', label: 'French' },
+  { value: 'English', label: 'English' },
+  { value: 'German', label: 'German' },
+  { value: 'Ukrainian', label: 'Ukrainian' },
+  { value: 'Polish', label: 'Polish' },
+];
+
+const LEVEL_OPTIONS: SelectOption[] = [
+  ALL,
+  { value: 'A1 Beginner', label: 'A1 Beginner' },
+  { value: 'A2 Elementary', label: 'A2 Elementary' },
+  { value: 'B1 Intermediate', label: 'B1 Intermediate' },
+  { value: 'B2 Upper-Intermediate', label: 'B2 Upper-Intermediate' },
+];
+
+const PRICE_OPTIONS: SelectOption[] = [
+  ALL,
+  { value: '10', label: '10' },
+  { value: '20', label: '20' },
+  { value: '30', label: '30' },
+  { value: '40', label: '40' },
+];
+
+const Filters = ({ filters, onFilterChange }: FiltersProps) => {
+  const handleChange = (name: keyof FilterState) => (value: string) => {
+    onFilterChange({ ...filters, [name]: value });
+  };
 
   return (
     <div className={style.filterContainer}>
-      <label className={style.filterWrapper}>
-            <p>Languages</p>
-            <select value={filters.language} name='language' onChange={handleChange}>
-                <option value="">All</option>
-                <option value="French">French</option>
-                <option value="English">English</option>
-                <option value="German">German</option>
-                <option value="Ukrainian">Ukrainian</option>
-                <option value="Polish">Polish</option>
-            </select>
-      </label>
+      <Select
+        className={style.language}
+        label='Languages'
+        value={filters.language}
+        options={LANGUAGE_OPTIONS}
+        onChange={handleChange('language')}
+      />
 
-        <label className={style.filterWrapper}>
-            <p>Level of knowledge</p>
-            <select value={filters.level} name='level' onChange={handleChange}>
-                <option value="">All</option>
-                <option value="A1 Beginner">A1 Beginner</option>
-                <option value="A2 Elementary">A2 Elementary</option>
-                <option value="B1 Intermediate">B1 Intermediate</option>
-                <option value="B2 Upper-Intermediate">B2 Upper-Intermediate</option>
-            </select>
-      </label>
+      <Select
+        className={style.level}
+        label='Level of knowledge'
+        value={filters.level}
+        options={LEVEL_OPTIONS}
+        onChange={handleChange('level')}
+      />
 
-        <label className={style.filterWrapper}>
-            <p>Price</p>
-            <select value={filters.price} name='price' onChange={handleChange}>
-                <option value="">All</option>
-                <option value="10">10 $</option>
-                <option value="20">20 $</option>
-                <option value="30">30 $</option>
-                <option value="40">40 $</option>
-            </select>
-      </label>
-
+      <Select
+        className={style.price}
+        label='Price'
+        value={filters.price}
+        options={PRICE_OPTIONS}
+        onChange={handleChange('price')}
+        formatSelected={option => (option.value ? `${option.label} $` : option.label)}
+      />
     </div>
   )
 }
