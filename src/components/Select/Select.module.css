@@ -1,0 +1,88 @@
+.select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--text-muted);
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11;
+    background-color: var(--white-bg);
+
+    &:focus-visible {
+        outline: 2px solid var(--green-color);
+        outline-offset: 2px;
+    }
+}
+
+.value {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chevron {
+    flex-shrink: 0;
+    transition: transform var(--transition);
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+.list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 272px;
+    overflow-y: auto;
+
+    padding: 14px 18px;
+    border-radius: 12px;
+    background-color: var(--white-bg);
+    box-shadow: 0 20px 69px rgba(0, 0, 0, 0.07);
+}
+
+.option {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11;
+    color: var(--border-color);
+    cursor: pointer;
+    transition: color var(--transition);
+
+    &[aria-selected='true'] {
+        color: var(--dark-bg);
+    }
+}
+
+.optionActive {
+    color: var(--dark-bg);
+}
