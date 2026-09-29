@@ -1,4 +1,3 @@
-import React from 'react'
 import style from './Header.module.css'
 import sprite from '/icons.svg?no-inline'
 import { Link, useLocation } from "react-router-dom";
