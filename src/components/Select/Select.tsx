@@ -126,7 +126,7 @@ const Select = ({ label, value, options, onChange, formatSelected, className }: 
           <path d='M5 7.5l5 5 5-5' fill='none' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
         </svg>
       </button>
-
+    
       {isOpen && (
         <ul id={listId} role='listbox' aria-labelledby={labelId} className={style.list}>
           {options.map((option, index) => (

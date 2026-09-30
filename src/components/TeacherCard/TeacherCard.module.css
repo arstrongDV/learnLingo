@@ -130,6 +130,16 @@
     &:focus-visible {
         fill: var(--dark-bg);
     }
+
+    /* Teacher is in favorites: filled heart, empties on hover */
+    &.favorite {
+        fill: var(--dark-bg);
+
+        &:hover,
+        &:focus-visible {
+            fill: transparent;
+        }
+    }
 }
 
 /* ===== Details ===== */

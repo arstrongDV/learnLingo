@@ -3,8 +3,10 @@ import { Toaster } from 'react-hot-toast'
 import AuthProvider from './context/AuthProvider'
 import Home from './pages/Home'
 import Teachers from './pages/Teachers'
+import Favorites from './pages/Favorites'
 import Register from './components/AuthModals/Register/Register'
 import Login from './components/AuthModals/Login/Login'
+import NoLoggedInModal from './components/NoLoggedInModal/NoLoggedInModal'
 
 function AppRoutes() {
   const location = useLocation()
@@ -15,12 +17,14 @@ function AppRoutes() {
       <Routes location={background || location}>
         <Route path='/' element={ <Home /> } />
         <Route path='/teachers' element={ <Teachers /> } />
+        <Route path='/favorites' element={ <Favorites /> } />
       </Routes>
 
       {background && (
         <Routes>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/auth-required' element={<NoLoggedInModal />} />
         </Routes>
       )}
     </>
