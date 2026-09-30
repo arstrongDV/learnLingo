@@ -37,11 +37,20 @@ export const fetchTeachers = async (lastKey?: string, filters?: FilterState): Pr
 
     return {
         teachers: filters ? filter(teachers, filters) : teachers,
-        // Cursor is the last *fetched* key, not the last matching one,
-        // otherwise filtered-out teachers would be fetched again
         lastKey: pageEntries.at(-1)?.[0] ?? null,
         hasMore: entries.length > PAGE_SIZE,
     };
+}
+
+/** Loads only the given teachers, e.g. the user's favorites */
+export const fetchTeachersByIds = async (ids: string[]): Promise<Teacher[]> => {
+    const responses = await Promise.all(
+        ids.map((id) => api.get<TeacherData | null>(`/${id}.json`))
+    );
+
+    return responses.flatMap((res, index) =>
+        res.data ? [{ id: ids[index], ...res.data }] : []
+    );
 }
 
 function filter(teachers: Teacher[], filters: FilterState) {

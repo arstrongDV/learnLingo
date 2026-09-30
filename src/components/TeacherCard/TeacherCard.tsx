@@ -1,7 +1,10 @@
 import type { Teacher } from '../../types/user'
 import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import sprite from '/icons.svg?no-inline'
 import style from './TeacherCard.module.css'
+import { useAuth } from '../../context/useAuth';
+import { useFavoriteIds, useFavoritesStore } from '../../store/store';
 
 interface TeacherCardProps {
     teacher: Teacher;
@@ -9,6 +12,22 @@ interface TeacherCardProps {
 
 const TeacherCard = ({teacher}: TeacherCardProps) => {
     const [isReadMore, setReadMore] = useState(false);
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const favoriteIds = useFavoriteIds();
+    const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+    const isFavorite = favoriteIds.includes(teacher.id);
+
+    const onFavoriteButtonClick = () => {
+        if (!user) {
+            navigate('/auth-required', { state: { backgroundLocation: location } });
+            return;
+        }
+
+        toggleFavorite(user.uid, teacher.id);
+    }
 
   return (
     <article className={style.card}>
@@ -49,7 +68,13 @@ const TeacherCard = ({teacher}: TeacherCardProps) => {
                         </li>
                     </ul>
 
-                    <button type='button' className={style.favoriteButton} aria-label='Add to favorites'>
+                    <button
+                        type='button'
+                        className={`${style.favoriteButton} ${isFavorite ? style.favorite : ''}`}
+                        aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                        aria-pressed={isFavorite}
+                        onClick={onFavoriteButtonClick}
+                    >
                         <svg width={26} height={26} aria-hidden='true'>
                             <use href={`${sprite}#icon-heart`}></use>
                         </svg>

@@ -33,6 +33,7 @@ const Header = () => {
             <ul className={style.navList}>
               <li><Link to='/' className={style.navLink}>Home</Link></li>
               <li><Link to='/teachers' className={style.navLink}>Teachers</Link></li>
+              {isLoggedIn && <li><Link to='/favorites' className={style.navLink}>Favorites</Link></li>}
             </ul>
           </nav>
         </div>
