@@ -18,6 +18,8 @@
     padding: 64px;
     border-radius: 30px;
     background-color: var(--white-bg);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
 }
 
 .closeButton {

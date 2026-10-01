@@ -1,0 +1,211 @@
+.bookContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+}
+
+.bookHeader {
+    margin-bottom: 20px;
+
+    h2 {
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--dark-bg);
+    }
+
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.38;
+        color: var(--text-description);
+    }
+}
+
+.teacherInfo {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.avatar{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.teacher {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: start;
+
+    p{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.33;
+        color: var(--text-muted);
+    }
+
+    h3{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--dark-bg);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.reasons {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 20px;
+
+    legend {
+        margin-bottom: 20px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.33;
+        color: var(--dark-bg);
+    }
+}
+
+.radioBtns {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 17px;
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38;
+    text-align: center;
+    color: var(--dark-bg);
+}
+/* ===== Custom radio ===== */
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.radioInput {
+    /* Remove the browser's default radio, keep the real <input> for keyboard and screen readers */
+    appearance: none;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color var(--transition);
+
+    /* Inner dot, hidden until checked */
+    &::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--green-color);
+        transform: scale(0);
+        transition: transform var(--transition);
+    }
+
+    &:checked {
+        border-color: var(--green-color);
+
+        &::before {
+            transform: scale(1);
+        }
+    }
+
+    &:hover {
+        border-color: var(--green-color);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--green-color);
+        outline-offset: 2px;
+    }
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input {
+    border: 1px solid var(--input-border-color);
+    border-radius: 12px;
+    padding: 16px 18px;
+    width: 100%;
+    max-width: 472px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38;
+    color: var(--dark-bg);
+    transition: border-color var(--transition);
+
+    &::placeholder {
+        color: var(--dark-bg);
+    }
+
+    &:focus-visible {
+        outline: none;
+        border-color: var(--yellow-color);
+    }
+
+    /* Set by aria-invalid={!!errors.field} in the component */
+    &[aria-invalid='true'] {
+        border-color: var(--error-color);
+    }
+}
+
+.errorText {
+    margin-top: 6px;
+
+    font-size: 13px;
+    line-height: 1.38;
+    color: var(--error-color);
+}
+
+.submitButton {
+    border-radius: 12px;
+    padding: 16px 0;
+    width: 100%;
+    max-width: 472px;
+    background-color: var(--green-color);
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--dark-bg);
+    transition: background-color var(--transition);
+
+    &:hover,
+    &:focus-visible {
+        background-color: var(--green-hover-color);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}

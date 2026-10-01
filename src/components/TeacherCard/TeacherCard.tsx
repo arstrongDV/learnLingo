@@ -137,7 +137,7 @@ const TeacherCard = ({teacher}: TeacherCardProps) => {
                 ))}
             </ul>
 
-            <button type='button' className={style.bookButton}>Book trial lesson</button>
+            <button type='button' onClick={() => navigate('/book', { state: { backgroundLocation: location, teacher } })} className={style.bookButton}>Book trial lesson</button>
         </div>
     </article>
   )

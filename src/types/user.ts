@@ -7,7 +7,16 @@ export const LANGUAGE_LEVELS = [
   'C2 Proficient',
 ] as const;
 
+export const LEARNING_REASON = [
+  'Career and business',
+  'Lesson for kids',
+  'Living abroad',
+  'Exams and coursework',
+  'Culture, travel or hobby'
+] as const;
+
 export type LanguageLevel = (typeof LANGUAGE_LEVELS)[number];
+export type LearningReason = (typeof LEARNING_REASON)[number];
 
 export interface Review {
   reviewer_name: string;
@@ -15,7 +24,6 @@ export interface Review {
   comment: string;
 }
 
-/** Teacher record exactly as stored in Firebase Realtime Database */
 export interface TeacherData {
   name: string;
   surname: string;
@@ -31,7 +39,6 @@ export interface TeacherData {
   experience: string;
 }
 
-/** Teacher as used in the app: the database key is attached as `id` */
 export interface Teacher extends TeacherData {
   id: string;
 }
