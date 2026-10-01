@@ -88,7 +88,12 @@ button {
   --green-color: #9fbaae;
   --green-hover-color: #cbded3;
   --light-green: #38cd3e;
+  --yellow-color: #f4c550;
+  --yellow-hover-color: #ffdc86;
   --error-color: #e04c4c;
+
+  /* Shadows */
+  --dropdown-shadow: 0 20px 69px rgba(0, 0, 0, 0.07);
 
   /* Animation */
   --transition: 350ms ease;

@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites'
 import Register from './components/AuthModals/Register/Register'
 import Login from './components/AuthModals/Login/Login'
 import NoLoggedInModal from './components/NoLoggedInModal/NoLoggedInModal'
+import BookTrialModal from './components/BookTrialModal/BookTrialModal'
 
 function AppRoutes() {
   const location = useLocation()
@@ -25,6 +26,7 @@ function AppRoutes() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/auth-required' element={<NoLoggedInModal />} />
+          <Route path='/book' element={<BookTrialModal />} />
         </Routes>
       )}
     </>
