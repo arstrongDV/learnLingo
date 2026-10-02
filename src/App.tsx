@@ -8,6 +8,7 @@ import Register from './components/AuthModals/Register/Register'
 import Login from './components/AuthModals/Login/Login'
 import NoLoggedInModal from './components/NoLoggedInModal/NoLoggedInModal'
 import BookTrialModal from './components/BookTrialModal/BookTrialModal'
+import Header from './components/Header/Header'
 
 function AppRoutes() {
   const location = useLocation()
@@ -15,6 +16,7 @@ function AppRoutes() {
 
   return (
     <>
+      <Header />
       <Routes location={background || location}>
         <Route path='/' element={ <Home /> } />
         <Route path='/teachers' element={ <Teachers /> } />
